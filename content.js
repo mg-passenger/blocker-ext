@@ -94,8 +94,8 @@
         `;
 
         const allowedLink = document.createElement('a');
-        allowedLink.href = 'https://mg-passenger.online';
-        allowedLink.textContent = 'Go to mg-passenger.online';
+        allowedLink.href = 'https://cooperative.mg-passenger.online';
+        allowedLink.textContent = 'Go to cooperative.mg-passenger.online';
         allowedLink.style.cssText = `
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
@@ -212,8 +212,8 @@
     function preventNavigation() {
         if (shouldBlockCurrentPage()) {
             // Try to redirect to allowed domain
-            if (window.location.href !== 'https://mg-passenger.online') {
-                window.location.href = 'https://mg-passenger.online';
+            if (window.location.href !== 'https://cooperative.mg-passenger.online') {
+                window.location.href = 'https://cooperative.mg-passenger.online';
             }
         }
     }
