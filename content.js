@@ -5,11 +5,13 @@
     // Check if current page should be blocked
     function shouldBlockCurrentPage() {
         const hostname = window.location.hostname.toLowerCase();
-        const allowedDomain = 'mg-passenger.online';
+        const allowedDomains = ['mg-passenger.online', 'google.com'];
         
-        // Allow mg-passenger.online and its subdomains
-        if (hostname === allowedDomain || hostname.endsWith('.' + allowedDomain)) {
-            return false;
+        // Allow mg-passenger.online, google.com and their subdomains
+        for (const allowedDomain of allowedDomains) {
+            if (hostname === allowedDomain || hostname.endsWith('.' + allowedDomain)) {
+                return false;
+            }
         }
         
         return true;
@@ -83,7 +85,7 @@
         `;
 
         const message = document.createElement('p');
-        message.textContent = 'Cette machine n\'est pas autorisée à accéder à ce site. Seuls les sites mg-passenger.online et ses sous-domaines sont autorisés.';
+        message.textContent = 'Cette machine n\'est pas autorisée à accéder à ce site. Seuls les sites mg-passenger.online, google.com et leurs sous-domaines sont autorisés.';
         message.style.cssText = `
             font-size: 16px;
             line-height: 1.6;

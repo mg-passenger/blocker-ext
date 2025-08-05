@@ -1,5 +1,5 @@
 // Background service worker for website blocking using Manifest V3
-const ALLOWED_DOMAIN = 'mg-passenger.online';
+const ALLOWED_DOMAINS = ['mg-passenger.online', 'google.com'];
 let isEnabled = true; // Default to enabled
 
 // Function to check if URL should be blocked
@@ -8,9 +8,11 @@ function shouldBlockUrl(url) {
     const urlObj = new URL(url);
     const hostname = urlObj.hostname.toLowerCase();
     
-    // Allow mg-passenger.online and its subdomains
-    if (hostname === ALLOWED_DOMAIN || hostname.endsWith('.' + ALLOWED_DOMAIN)) {
-      return false; // Don't block
+    // Allow mg-passenger.online, google.com and their subdomains
+    for (const allowedDomain of ALLOWED_DOMAINS) {
+      if (hostname === allowedDomain || hostname.endsWith('.' + allowedDomain)) {
+        return false; // Don't block
+      }
     }
     
     // Block everything else
@@ -29,7 +31,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
     // Set default settings
     chrome.storage.local.set({
       enabled: true,
-      allowedDomain: ALLOWED_DOMAIN,
+      allowedDomain: ALLOWED_DOMAINS, // Store allowed domains as an array
       blockedCount: 0
     });
   }
