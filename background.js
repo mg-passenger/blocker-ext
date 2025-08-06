@@ -1,5 +1,5 @@
 // Background service worker for website blocking using Manifest V3
-const ALLOWED_DOMAINS = ['mg-passenger.online', 'google.com'];
+const ALLOWED_DOMAINS = ['mg-passenger.online', 'google.com','capsule.mg'];
 let isEnabled = true; // Default to enabled
 
 // Function to check if URL should be blocked

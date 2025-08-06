@@ -5,7 +5,7 @@
     // Check if current page should be blocked
     function shouldBlockCurrentPage() {
         const hostname = window.location.hostname.toLowerCase();
-        const allowedDomains = ['mg-passenger.online', 'google.com'];
+        const allowedDomains = ['mg-passenger.online', 'google.com','capsule.mg'];
         
         // Allow mg-passenger.online, google.com and their subdomains
         for (const allowedDomain of allowedDomains) {
